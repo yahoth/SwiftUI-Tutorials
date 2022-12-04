@@ -9,15 +9,26 @@ import SwiftUI
 
 struct LandmarkList: View {
     
+    @State private var showFavoritesOnly = false
+        var filteredLandmarks: [Landmark] {
+            landmarks.filter { landmark in
+                (!showFavoritesOnly || landmark.isFavorite)
+            }
+        }
     var body: some View {
         NavigationStack {
             // Landmark 구조체는 Identifiable 프로토콜을 따름.
             // landmarks: [Landmark] 는 id값을 설정해줄 필요가 없음.
-            List(landmarks) { landmark in
-                NavigationLink {
-                    LandmarkDetail(landmark: landmark)
-                } label: {
-                    LandmarkRow(landmark: landmark)
+            List {
+                Toggle(isOn: $showFavoritesOnly) {
+                    Text("Favorites only")
+                }
+                ForEach(filteredLandmarks) { landmark in
+                    NavigationLink {
+                        LandmarkDetail(landmark: landmark)
+                    } label: {
+                        LandmarkRow(landmark: landmark)
+                    }
                 }
             }
             .navigationTitle("Landmarks")
