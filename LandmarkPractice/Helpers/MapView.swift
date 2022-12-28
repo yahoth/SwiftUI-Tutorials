@@ -8,13 +8,11 @@
 import SwiftUI
 import MapKit
 
-
 /*
-기본 좌표 값이 있다.
-데이터에 의한 좌표를 전달해야하는데, 변수 상으로 시도했을 때는 실패했다.
-좌표값을 변경해주는 function을 만들어서 onApear에 담아준다.
- 
-*/
+ 기본 좌표 값이 있다.
+ 데이터에 의한 좌표를 전달해야하는데, 변수 상으로 시도했을 때는 실패했다.
+ 좌표값을 변경해주는 function을 만들어서 onApear에 담아준다.
+ */
 
 struct MapView: View {
     
